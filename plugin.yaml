@@ -1,5 +1,5 @@
 name: log-plugin
-description: Log Plugin
+description: Classe que ajuda na geração de logs
 display-name: log-plugin
 picture: plugin.png
 category: backend # Ref: https://docs.stackspot.com/docs/create-stacks/yaml-files/plugin/#category
@@ -15,17 +15,9 @@ technologies: # Ref: https://docs.stackspot.com/docs/create-stacks/yaml-files/ya
 types:
   - app
 inputs:
-  - label: Input Example
+  - label: Caminho completo do pacote onde o arquivo deve ser gerado
     type: text
-    name: example
-    default: any text
-  - label: Example of number
-    type: int
-    name: any_number
-    default: "10"
-  - label: Example of list
-    type: multiselect
-    name: any_list
-    items:
-      - item1
-      - item2
+    name: pacote
+
+computedInputs:
+  "pasta": "{{inputs.pacote | replace('.','/')}}"
